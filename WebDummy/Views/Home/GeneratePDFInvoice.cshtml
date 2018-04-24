@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "GeneratePDFInvoice";
+}
+
+<h2>GeneratePDFInvoice</h2>
+
+<form method="post" action="/Home/generatepdf">
+    <div style="align-content:center;">
+        <label>Nom produit</label>
+        <input type="text" name="productname" />
+        <label>Quantité produit</label>
+        <input type="number" name="productquantity" />
+
+        <button type="submit">Generate PDF</button>
+    </div>
+</form>
