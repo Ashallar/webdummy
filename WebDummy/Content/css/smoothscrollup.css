@@ -1,0 +1,10 @@
+﻿.top-arrow {
+    width: 40px;
+    height: 40px;
+    border: 3px solid grey;
+    cursor: pointer;
+}
+
+.top-arrow:hover {
+    background-color: cornflowerblue;
+}

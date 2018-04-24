@@ -26,5 +26,10 @@ namespace WebDummy.Controllers
 
             return View();
         }
+
+        public ActionResult TestSmoothScrollUp()
+        {
+            return View();
+        }
     }
 }
