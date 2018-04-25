@@ -42,24 +42,25 @@ namespace WebDummy.Controllers
         }
 
         [HttpPost]
-        public FileResult GeneratePDF(string productname, double productquantity)
+        public FileResult GeneratePDF(string productname = "", double productquantity = 0)
         {
-            System.Diagnostics.Debug.WriteLine($"Name: {productname} Quantity: {productquantity}");
-
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Created with PDFSHarp";
 
             PdfPage page = document.AddPage();
 
-            // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
 
-            XFont font = new XFont("Verdana", 20, XFontStyle.BoldItalic);
-            gfx.DrawString("Hello, World!", font, XBrushes.Black,
-            new XRect(0, 0, page.Width, page.Height),
-            XStringFormats.Center);
-            const string filename = "HelloWorld.pdf";
+            XImage logo = XImage.FromFile(@"C:\Users\basti\source\repos\webdummy\WebDummy\Content\images\Dispolink-logo-01.jpg");
+            gfx.DrawImage(logo, 0, 0, 175, 124);
+
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            gfx.DrawString("Facture", font, XBrushes.Black, new XRect(50, 100, page.Width, page.Height), XStringFormats.TopLeft);
+
+            XPen pen = new XPen(XColors.Black, 1);
+
+            gfx.DrawRectangle(pen, XBrushes.White, 50, 150, 500, 500);
 
             MemoryStream stream = new MemoryStream();
             document.Save(stream, false);
